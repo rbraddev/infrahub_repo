@@ -1,0 +1,12 @@
+---
+schemas:
+  - schemas/device.yml
+
+check_definitions:
+  - name: "check_hostname"
+    class_name: "HostnameCheck"
+    file_path: "checks/hostname_check.py"
+
+queries:
+  - name: "hostname_check"
+    file_path: "queries/hostname_check.gql"

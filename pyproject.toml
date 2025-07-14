@@ -1,0 +1,8 @@
+[project]
+name = "infrahub-repo"
+version = "0.1.0"
+description = "Infrahub Repo"
+requires-python = ">=3.12"
+dependencies = [
+    "infrahub-sdk[all]>=1.13.3",
+]

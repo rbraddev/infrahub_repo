@@ -1,0 +1,12 @@
+query HostQuery {
+    NetworkDevice {
+        edges {
+            node {
+                id
+                hostname {value}
+                site {value}
+                role {value}
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+---
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+version: "1.0"
+
+generics:
+  - name: Interface 
+    namespace: Network
+    attributes:
+      - name: name
+        kind: Text
+      - name: speed
+        kind: Number
+    relationships:
+      - name: device
+        peer: NetworkDevice
+        cardinality: one
+        optional: false
+
+
+nodes:
+  - name: Device
+    namespace: Network
+    display_labels:
+      - hostname__value
+    attributes:
+      - name: hostname
+        kind: Text
+        unique: true
+      - name: model
+        kind: Text
+      - name: site
+        kind: Text
+      - name: role
+        kind: Dropdown
+        default_value: router
+        choices:
+          - name: router
+            color: "#11a523"
+            description: "Router device"
+          - name: switch
+            color: "#1a8bff"
+            description: "Switch device"
+          - name: firewall
+            color: "#ff5722"
+            description: "Firewall device"
+    relationships:
+      - name: interfaces
+        peer: NetworkInterface
+        cardinality: many
+        optional: true
+        identifier: "networkdevice__interface"
+
+  - name: InterfaceL2
+    namespace: Network
+    inherit_from:
+      - NetworkInterface
+
+  - name: InterfaceL3
+    namespace: Network
+    inherit_from:
+      - NetworkInterface
